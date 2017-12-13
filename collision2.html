@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>collision</title>
+	<style type="text/css">
+		
+		canvas{
+			width: 350px;
+			height: 150px;
+
+
+		}
+
+	</style>
+</head>
+<body>
+<canvas style="border: 1px solid black"></canvas>
+
+
+<script type="text/javascript">
+
+	var canvas = document.querySelector("canvas");
+	var c = canvas.getContext('2d');
+	
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+
+	var ax = Math.random();
+	var ay = Math.random();
+	var aw = 10;
+	var ah = 10;
+	
+	var dx = 10;
+	var dy = 10;
+
+
+
+	var bx = 100;
+	var by = 50;
+	var bw = 60;
+	var bh = 60;
+
+
+
+
+	function move(){
+
+		c.clearRect(0, 0, innerWidth, innerHeight);
+		requestAnimationFrame(move);
+
+
+		c.beginPath();
+		c.rect(bx, by, bw, bh);
+		c.stroke();
+
+		c.beginPath();
+		c.rect(ax, ay, aw, ah);
+		c.stroke();
+
+		ax += dx;
+		ay += dy;
+
+		if ( ax > innerWidth || ax < 0){
+
+			dx = -dx;
+		}
+
+		if ( ay > innerHeight || ay < 0){
+
+			dy = -dy;
+		}
+
+		if ( ax < bx + bw && ax + aw > bx && ay < by + bh && ay + ah > by) {
+
+		c.beginPath();
+		c.rect(bx, by, bw, bh);
+		c.strokeStyle = "red";
+		c.stroke();
+
+		} else {
+
+		c.beginPath();
+		c.rect(ax, ay, aw, ah);
+		c.strokeStyle = "black";
+		c.stroke();
+
+
+		}
+	
+		
+	}
+
+	move();
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

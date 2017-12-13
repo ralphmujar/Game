@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>collision</title>
+	<style type="text/css">
+		
+		canvas{
+			width: 350px;
+			height: 150px;
+
+
+		}
+
+	</style>
+</head>
+<body>
+<canvas style="border: 1px solid black"></canvas>
+
+
+<script type="text/javascript">
+
+	var canvas = document.querySelector("canvas");
+	var c = canvas.getContext('2d');
+	
+	canvas.width = window.innerWidth;
+	canvas.height = window.innerHeight;
+
+
+
+	var aw = 10;
+	var ah = 10;
+	
+
+
+
+
+	var bx = 50;
+	var by = 50;
+	var bw = 40;
+	var bh = 40;
+	
+
+
+
+
+		canvas.addEventListener("mousemove", move);
+
+
+	function move(e){
+
+		c.clearRect(0, 0, innerWidth, innerHeight);
+
+		var x = e.clientX;
+		var y = e.clientY;
+
+		c.beginPath();
+		c.rect(bx, by, bw, bh);
+		c.stroke();
+
+
+		c.beginPath();
+		c.rect(x, y, aw, ah);
+		c.stroke();
+
+		if ( x < bx + bw && x + aw > bx && y < by + bh && y + ah > by) {
+
+		c.beginPath();
+		c.rect(x, y, aw, ah);
+		c.strokeStyle = "red";
+		c.stroke();
+
+		} else {
+
+
+		c.beginPath();
+		c.rect(x, y, aw, ah);
+		c.strokeStyle = "black";
+		c.stroke();
+
+
+		}
+
+
+	}
+	
+
+</script>
+</body>
+</html>
